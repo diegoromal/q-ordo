@@ -1,5 +1,5 @@
 import { CreateCompanyUsecase } from './create-company.usecase';
-import { CnpjAlreadyExistsUsecaseException } from '../exceptions/cnpj-already-exists.usecase.exception';
+import { CnpjAlreadyExistsUsecaseException } from '../../exceptions/cnpj-already-exists.usecase.exception';
 import { Company } from 'src/domain/entities/company.entity';
 import type { CompanyGateway } from 'src/domain/repositories/company.gateway';
 
