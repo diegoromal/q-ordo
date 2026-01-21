@@ -10,6 +10,7 @@ describe('Usecases > Company > FindCompanyByCnpjUsecase', () => {
       findByCnpj: jest.fn(),
       findById: jest.fn(),
       create: jest.fn(),
+      update: jest.fn(),
       delete: jest.fn(),
     }) as jest.Mocked<CompanyGateway>;
 

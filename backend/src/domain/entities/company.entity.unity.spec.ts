@@ -83,4 +83,60 @@ describe('Domain > Entities > Company', () => {
       expect(createInvalidPersistedCompany).toThrow(ValidatorDomainException);
     });
   });
+
+  describe('update', () => {
+    it('should update company data and refresh updatedAt', () => {
+      const createdAt = new Date('2024-01-01T00:00:00Z');
+      const updatedAt = new Date('2024-02-01T00:00:00Z');
+
+      const aCompany = Company.with({
+        id: randomUUID(),
+        name: 'Persisted Corp',
+        cnpj: '98.765.432/0001-10',
+        cep: '87654-321',
+        hasContract: true,
+        createdAt,
+        updatedAt,
+      });
+
+      const previousUpdatedAt = aCompany.getUpdatedAt();
+
+      aCompany.update({
+        name: 'Updated Corp',
+        cnpj: '11.222.333/0001-44',
+        cep: '11111-222',
+      });
+
+      expect(aCompany.getName()).toBe('Updated Corp');
+      expect(aCompany.getCnpj()).toBe('11.222.333/0001-44');
+      expect(aCompany.getCep()).toBe('11111-222');
+      expect(aCompany.getHasContract()).toBe(true);
+      expect(aCompany.getUpdatedAt().getTime()).toBeGreaterThan(
+        previousUpdatedAt.getTime(),
+      );
+    });
+
+    it('should not persist changes when validation fails', () => {
+      const aCompany = Company.create({
+        name: 'Valid Corp',
+        cnpj: '12.345.678/0001-90',
+        cep: '12345-678',
+      });
+
+      const previousUpdatedAt = aCompany.getUpdatedAt();
+
+      const updateWithInvalidCep = () =>
+        aCompany.update({
+          name: 'Updated Corp',
+          cnpj: '98.765.432/0001-10',
+          cep: 123 as unknown as string,
+        });
+
+      expect(updateWithInvalidCep).toThrow(ValidatorDomainException);
+      expect(aCompany.getName()).toBe('Valid Corp');
+      expect(aCompany.getCnpj()).toBe('12.345.678/0001-90');
+      expect(aCompany.getCep()).toBe('12345-678');
+      expect(aCompany.getUpdatedAt()).toBe(previousUpdatedAt);
+    });
+  });
 });

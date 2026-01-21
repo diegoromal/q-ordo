@@ -8,6 +8,12 @@ export type CompanyCreateDto = {
   cep: string;
 };
 
+export type CompanyUpdateDto = {
+  name: string;
+  cnpj: string;
+  cep: string;
+};
+
 export type CompanyWithDto = {
   id: string;
   name: string;
@@ -55,6 +61,31 @@ export class Company extends Entity {
 
   protected validate(): void {
     CompanyValidatorFactory.create().validate(this);
+  }
+
+  public update({ name, cnpj, cep }: CompanyUpdateDto): void {
+    const previousState = {
+      name: this.name,
+      cnpj: this.cnpj,
+      cep: this.cep,
+      updatedAt: this.updatedAt,
+    };
+
+    this.name = name;
+    this.cnpj = cnpj;
+    this.cep = cep;
+    this.hasUpdated();
+
+    try {
+      this.validate();
+    } catch (error) {
+      this.name = previousState.name;
+      this.cnpj = previousState.cnpj;
+      this.cep = previousState.cep;
+      this.updatedAt = previousState.updatedAt;
+
+      throw error;
+    }
   }
 
   public getName(): string {
