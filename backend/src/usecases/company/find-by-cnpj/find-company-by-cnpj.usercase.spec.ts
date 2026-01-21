@@ -1,15 +1,17 @@
+/* eslint-disable @typescript-eslint/unbound-method */
 import { FindCompanyByCnpjUsecase } from './find-company-by-cnpj.usercase';
 import { CompanyNotFoundUsecaseException } from '../../exceptions/company-not-found.usecase.exception';
 import { Company } from 'src/domain/entities/company.entity';
 import type { CompanyGateway } from 'src/domain/repositories/company.gateway';
 
 describe('Usecases > Company > FindCompanyByCnpjUsecase', () => {
-  const makeGateway = (): CompanyGateway =>
+  const makeGateway = (): jest.Mocked<CompanyGateway> =>
     ({
       findByCnpj: jest.fn(),
       findById: jest.fn(),
       create: jest.fn(),
-    }) as CompanyGateway;
+      delete: jest.fn(),
+    }) as jest.Mocked<CompanyGateway>;
 
   it('should return a company when cnpj exists', async () => {
     const aGateway = makeGateway();

@@ -1,15 +1,17 @@
+/* eslint-disable @typescript-eslint/unbound-method */
 import { CreateCompanyUsecase } from './create-company.usecase';
 import { CnpjAlreadyExistsUsecaseException } from '../../exceptions/cnpj-already-exists.usecase.exception';
 import { Company } from 'src/domain/entities/company.entity';
 import type { CompanyGateway } from 'src/domain/repositories/company.gateway';
 
 describe('Usecases > Company > CreateCompanyUsecase', () => {
-  const makeGateway = (): CompanyGateway =>
+  const makeGateway = (): jest.Mocked<CompanyGateway> =>
     ({
       findByCnpj: jest.fn(),
       findById: jest.fn(),
       create: jest.fn(),
-    }) as CompanyGateway;
+      delete: jest.fn(),
+    }) as jest.Mocked<CompanyGateway>;
 
   it('should create a company when cnpj is available', async () => {
     const aGateway = makeGateway();
