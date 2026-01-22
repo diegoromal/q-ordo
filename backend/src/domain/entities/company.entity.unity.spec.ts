@@ -105,12 +105,13 @@ describe('Domain > Entities > Company', () => {
         name: 'Updated Corp',
         cnpj: '11.222.333/0001-44',
         cep: '11111-222',
+        hasContract: false,
       });
 
       expect(aCompany.getName()).toBe('Updated Corp');
       expect(aCompany.getCnpj()).toBe('11.222.333/0001-44');
       expect(aCompany.getCep()).toBe('11111-222');
-      expect(aCompany.getHasContract()).toBe(true);
+      expect(aCompany.getHasContract()).toBe(false);
       expect(aCompany.getUpdatedAt().getTime()).toBeGreaterThan(
         previousUpdatedAt.getTime(),
       );
@@ -130,12 +131,14 @@ describe('Domain > Entities > Company', () => {
           name: 'Updated Corp',
           cnpj: '98.765.432/0001-10',
           cep: 123 as unknown as string,
+          hasContract: true,
         });
 
       expect(updateWithInvalidCep).toThrow(ValidatorDomainException);
       expect(aCompany.getName()).toBe('Valid Corp');
       expect(aCompany.getCnpj()).toBe('12.345.678/0001-90');
       expect(aCompany.getCep()).toBe('12345-678');
+      expect(aCompany.getHasContract()).toBe(false);
       expect(aCompany.getUpdatedAt()).toBe(previousUpdatedAt);
     });
   });

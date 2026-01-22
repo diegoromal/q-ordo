@@ -8,7 +8,7 @@ export class CompanyPrismaModelToCompanyEntityMapper {
       name: company.name,
       cnpj: company.cnpj,
       cep: company.cep,
-      hasContract: false,
+      hasContract: company.hasContract,
       createdAt: company.createdAt,
       updatedAt: company.updatedAt,
     });

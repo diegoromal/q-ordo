@@ -75,6 +75,7 @@ export const CompanyScalarFieldEnum = {
   name: 'name',
   cnpj: 'cnpj',
   cep: 'cep',
+  hasContract: 'hasContract',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

@@ -41,6 +41,7 @@ describe('Usecases > Company > UpdateCompanyUsecase', () => {
       name: 'Updated Corp',
       cnpj: '98.765.432/0001-10',
       cep: '87654-321',
+      hasContract: true,
     });
 
     expect(aGateway.findById).toHaveBeenCalledWith(
@@ -52,7 +53,7 @@ describe('Usecases > Company > UpdateCompanyUsecase', () => {
     expect(output.name).toBe('Updated Corp');
     expect(output.cnpj).toBe('98.765.432/0001-10');
     expect(output.cep).toBe('87654-321');
-    expect(output.hasContract).toBe(false);
+    expect(output.hasContract).toBe(true);
     expect(output.createdAt).toBe(createdAt);
     expect(output.updatedAt.getTime()).toBeGreaterThan(
       previousUpdatedAt.getTime(),
@@ -84,6 +85,7 @@ describe('Usecases > Company > UpdateCompanyUsecase', () => {
       name: 'Updated Corp',
       cnpj: '12.345.678/0001-90',
       cep: '87654-321',
+      hasContract: false,
     });
 
     expect(aGateway.findById).toHaveBeenCalledWith(
@@ -106,6 +108,7 @@ describe('Usecases > Company > UpdateCompanyUsecase', () => {
         name: 'Updated Corp',
         cnpj: '98.765.432/0001-10',
         cep: '87654-321',
+        hasContract: false,
       }),
     ).rejects.toThrow(CompanyNotFoundUsecaseException);
 
@@ -148,6 +151,7 @@ describe('Usecases > Company > UpdateCompanyUsecase', () => {
         name: 'Updated Corp',
         cnpj: '98.765.432/0001-10',
         cep: '87654-321',
+        hasContract: false,
       }),
     ).rejects.toThrow(CnpjAlreadyExistsUsecaseException);
 

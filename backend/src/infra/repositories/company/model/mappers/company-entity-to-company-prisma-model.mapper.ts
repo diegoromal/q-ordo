@@ -8,6 +8,7 @@ export class CompanyEntityToCompanyPrismaModel {
       name: company.getName(),
       cnpj: company.getCnpj(),
       cep: company.getCep(),
+      hasContract: company.getHasContract(),
       createdAt: company.getCreatedAt(),
       updatedAt: company.getUpdatedAt(),
     };

@@ -9,6 +9,7 @@ export type UpdateCompanyInput = {
   name: string;
   cnpj: string;
   cep: string;
+  hasContract: boolean;
 };
 
 export type UpdateCompanyOutput = {
@@ -33,6 +34,7 @@ export class UpdateCompanyUsecase implements Usecase<
     name,
     cnpj,
     cep,
+    hasContract,
   }: UpdateCompanyInput): Promise<UpdateCompanyOutput> {
     const aCompany = await this.companyGateway.findById(id);
 
@@ -58,7 +60,7 @@ export class UpdateCompanyUsecase implements Usecase<
       }
     }
 
-    aCompany.update({ name, cnpj, cep });
+    aCompany.update({ name, cnpj, cep, hasContract });
 
     await this.companyGateway.update(aCompany);
 

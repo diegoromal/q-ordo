@@ -41,4 +41,21 @@ export class CompanyPrismaRepository extends CompanyGateway {
     const aModel = CompanyEntityToCompanyPrismaModel.map(company);
     await prismaClient.company.create({ data: aModel });
   }
+
+  public async update(company: Company): Promise<void> {
+    await prismaClient.company.update({
+      where: { id: company.getId() },
+      data: {
+        name: company.getName(),
+        cnpj: company.getCnpj(),
+        cep: company.getCep(),
+        hasContract: company.getHasContract(),
+        updatedAt: company.getUpdatedAt(),
+      },
+    });
+  }
+
+  public async delete(id: string): Promise<void> {
+    await prismaClient.company.delete({ where: { id: id } });
+  }
 }

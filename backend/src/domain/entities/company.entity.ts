@@ -12,6 +12,7 @@ export type CompanyUpdateDto = {
   name: string;
   cnpj: string;
   cep: string;
+  hasContract: boolean;
 };
 
 export type CompanyWithDto = {

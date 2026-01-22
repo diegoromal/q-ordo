@@ -29,6 +29,7 @@ export type CompanyMinAggregateOutputType = {
   name: string | null
   cnpj: string | null
   cep: string | null
+  hasContract: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -38,6 +39,7 @@ export type CompanyMaxAggregateOutputType = {
   name: string | null
   cnpj: string | null
   cep: string | null
+  hasContract: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -47,6 +49,7 @@ export type CompanyCountAggregateOutputType = {
   name: number
   cnpj: number
   cep: number
+  hasContract: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -58,6 +61,7 @@ export type CompanyMinAggregateInputType = {
   name?: true
   cnpj?: true
   cep?: true
+  hasContract?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -67,6 +71,7 @@ export type CompanyMaxAggregateInputType = {
   name?: true
   cnpj?: true
   cep?: true
+  hasContract?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -76,6 +81,7 @@ export type CompanyCountAggregateInputType = {
   name?: true
   cnpj?: true
   cep?: true
+  hasContract?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -158,6 +164,7 @@ export type CompanyGroupByOutputType = {
   name: string
   cnpj: string
   cep: string
+  hasContract: boolean
   createdAt: Date
   updatedAt: Date
   _count: CompanyCountAggregateOutputType | null
@@ -188,6 +195,7 @@ export type CompanyWhereInput = {
   name?: Prisma.StringFilter<"Company"> | string
   cnpj?: Prisma.StringFilter<"Company"> | string
   cep?: Prisma.StringFilter<"Company"> | string
+  hasContract?: Prisma.BoolFilter<"Company"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Company"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Company"> | Date | string
 }
@@ -197,6 +205,7 @@ export type CompanyOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   cnpj?: Prisma.SortOrder
   cep?: Prisma.SortOrder
+  hasContract?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -209,6 +218,7 @@ export type CompanyWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.CompanyWhereInput | Prisma.CompanyWhereInput[]
   name?: Prisma.StringFilter<"Company"> | string
   cep?: Prisma.StringFilter<"Company"> | string
+  hasContract?: Prisma.BoolFilter<"Company"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Company"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Company"> | Date | string
 }, "id" | "cnpj">
@@ -218,6 +228,7 @@ export type CompanyOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   cnpj?: Prisma.SortOrder
   cep?: Prisma.SortOrder
+  hasContract?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.CompanyCountOrderByAggregateInput
@@ -233,6 +244,7 @@ export type CompanyScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"Company"> | string
   cnpj?: Prisma.StringWithAggregatesFilter<"Company"> | string
   cep?: Prisma.StringWithAggregatesFilter<"Company"> | string
+  hasContract?: Prisma.BoolWithAggregatesFilter<"Company"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Company"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Company"> | Date | string
 }
@@ -242,6 +254,7 @@ export type CompanyCreateInput = {
   name: string
   cnpj: string
   cep: string
+  hasContract?: boolean
   createdAt: Date | string
   updatedAt: Date | string
 }
@@ -251,6 +264,7 @@ export type CompanyUncheckedCreateInput = {
   name: string
   cnpj: string
   cep: string
+  hasContract?: boolean
   createdAt: Date | string
   updatedAt: Date | string
 }
@@ -260,6 +274,7 @@ export type CompanyUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   cnpj?: Prisma.StringFieldUpdateOperationsInput | string
   cep?: Prisma.StringFieldUpdateOperationsInput | string
+  hasContract?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -269,6 +284,7 @@ export type CompanyUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   cnpj?: Prisma.StringFieldUpdateOperationsInput | string
   cep?: Prisma.StringFieldUpdateOperationsInput | string
+  hasContract?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -278,6 +294,7 @@ export type CompanyCreateManyInput = {
   name: string
   cnpj: string
   cep: string
+  hasContract?: boolean
   createdAt: Date | string
   updatedAt: Date | string
 }
@@ -287,6 +304,7 @@ export type CompanyUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   cnpj?: Prisma.StringFieldUpdateOperationsInput | string
   cep?: Prisma.StringFieldUpdateOperationsInput | string
+  hasContract?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -296,6 +314,7 @@ export type CompanyUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   cnpj?: Prisma.StringFieldUpdateOperationsInput | string
   cep?: Prisma.StringFieldUpdateOperationsInput | string
+  hasContract?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -305,6 +324,7 @@ export type CompanyCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   cnpj?: Prisma.SortOrder
   cep?: Prisma.SortOrder
+  hasContract?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -314,6 +334,7 @@ export type CompanyMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   cnpj?: Prisma.SortOrder
   cep?: Prisma.SortOrder
+  hasContract?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -323,12 +344,17 @@ export type CompanyMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   cnpj?: Prisma.SortOrder
   cep?: Prisma.SortOrder
+  hasContract?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type StringFieldUpdateOperationsInput = {
   set?: string
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
 }
 
 export type DateTimeFieldUpdateOperationsInput = {
@@ -342,6 +368,7 @@ export type CompanySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   name?: boolean
   cnpj?: boolean
   cep?: boolean
+  hasContract?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["company"]>
@@ -351,6 +378,7 @@ export type CompanySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   name?: boolean
   cnpj?: boolean
   cep?: boolean
+  hasContract?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["company"]>
@@ -360,6 +388,7 @@ export type CompanySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   name?: boolean
   cnpj?: boolean
   cep?: boolean
+  hasContract?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["company"]>
@@ -369,11 +398,12 @@ export type CompanySelectScalar = {
   name?: boolean
   cnpj?: boolean
   cep?: boolean
+  hasContract?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type CompanyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "cnpj" | "cep" | "createdAt" | "updatedAt", ExtArgs["result"]["company"]>
+export type CompanyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "cnpj" | "cep" | "hasContract" | "createdAt" | "updatedAt", ExtArgs["result"]["company"]>
 
 export type $CompanyPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Company"
@@ -383,6 +413,7 @@ export type $CompanyPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     name: string
     cnpj: string
     cep: string
+    hasContract: boolean
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["company"]>
@@ -812,6 +843,7 @@ export interface CompanyFieldRefs {
   readonly name: Prisma.FieldRef<"Company", 'String'>
   readonly cnpj: Prisma.FieldRef<"Company", 'String'>
   readonly cep: Prisma.FieldRef<"Company", 'String'>
+  readonly hasContract: Prisma.FieldRef<"Company", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Company", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Company", 'DateTime'>
 }
