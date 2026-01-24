@@ -1,10 +1,10 @@
 import { Company } from 'src/domain/entities/company.entity';
 import { CompanyGateway } from 'src/domain/repositories/company.gateway';
-import { prismaClient } from '../prisma/client.prisma';
+import { prismaClient } from '../client.prisma';
 import { CompanyPrismaModelToCompanyEntityMapper } from './model/mappers/company-prisma-model-to-company-entity.mapper';
 import { CompanyEntityToCompanyPrismaModel } from './model/mappers/company-entity-to-company-prisma-model.mapper';
 
-export class CompanyPrismaRepository extends CompanyGateway {
+export class CompanyPrismaRepositoryProvider extends CompanyGateway {
   public constructor() {
     super();
   }
