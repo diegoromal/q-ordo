@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/unbound-method */
-import { FindCompanyByCnpjUsecase } from './find-company-by-cnpj.usercase';
+import { FindCompanyByCnpjUsecase } from './find-company-by-cnpj.usecase';
 import { CompanyNotFoundUsecaseException } from '../../exceptions/company-not-found.usecase.exception';
 import { Company } from 'src/domain/entities/company.entity';
 import type { CompanyGateway } from 'src/domain/repositories/company.gateway';

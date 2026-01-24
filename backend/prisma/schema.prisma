@@ -2,8 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -15,7 +14,7 @@ model Company {
   name        String
   cnpj        String   @unique
   cep         String
-  hasContract Boolean  @map("has_contract") @default(false)
+  hasContract Boolean  @default(false) @map("has_contract")
   createdAt   DateTime @map("created_at")
   updatedAt   DateTime @map("updated_at")
 

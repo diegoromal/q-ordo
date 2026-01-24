@@ -1,6 +1,7 @@
 import type { CompanyGateway } from 'src/domain/repositories/company.gateway';
 import { CompanyNotFoundUsecaseException } from '../../exceptions/company-not-found.usecase.exception';
 import type { Usecase } from '../../usecase';
+import { Injectable } from '@nestjs/common';
 
 export type DeleteCompanyInput = {
   id: string;
@@ -10,6 +11,7 @@ export type DeleteCompanyOutput = {
   id: string;
 };
 
+@Injectable()
 export class DeleteCompanyUsecase implements Usecase<
   DeleteCompanyInput,
   DeleteCompanyOutput
