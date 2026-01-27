@@ -1,0 +1,10 @@
+###
+POST http://localhost:3003/company
+Content-Type: application/json
+
+{
+    
+    "name": "QOS IT - SOLUCOES EM SERVICOS DE TECNOLOGIA LTDA",
+    "cnpj": "21950170000107",
+    "cep": "81870260"
+}

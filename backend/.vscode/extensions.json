@@ -8,6 +8,7 @@
         "eamodio.gitlens",
         "mikestead.dotenv",
         "PKief.material-icon-theme",
-        "humao.rest-client"
+        "humao.rest-client",
+        "rangav.vscode-thunder-client"
     ]
 }
