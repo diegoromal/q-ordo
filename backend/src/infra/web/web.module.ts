@@ -7,6 +7,8 @@ import { FindByIdUserRouteController } from './routes/user/find-by-id/find-by-id
 import { CompanyEntityService } from 'src/domain/entities/company/company.entity.service';
 import { UserEntityService } from 'src/domain/entities/user/user.entity.service';
 import { DatabaseModule } from 'src/infra/database/database.module';
+import { AuthController } from './routes/auth/auth.controller';
+import { AuthService } from './routes/auth/auth.service';
 
 @Module({
   imports: [DatabaseModule],
@@ -16,7 +18,8 @@ import { DatabaseModule } from 'src/infra/database/database.module';
     FindByIdCompanyRouteController,
     CreateUserRouteController,
     FindByIdUserRouteController,
+    AuthController,
   ],
-  providers: [CompanyEntityService, UserEntityService],
+  providers: [CompanyEntityService, UserEntityService, AuthService],
 })
 export class WebModule {}
