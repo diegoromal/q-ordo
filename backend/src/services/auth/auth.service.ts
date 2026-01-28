@@ -4,14 +4,14 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { UserEntityService } from 'src/domain/entities/user/user.entity.service';
 import { Prisma, User } from 'src/generated/prisma/client';
 import * as bcrypt from 'bcrypt';
+import { UserService } from '../user/user.service';
 
 @Injectable()
 export class AuthService {
   @Inject()
-  private readonly userService: UserEntityService;
+  private readonly userService: UserService;
 
   async signin(
     params: Prisma.UserCreateInput,
