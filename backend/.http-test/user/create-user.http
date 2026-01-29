@@ -1,0 +1,11 @@
+###
+POST http://localhost:3003/user
+Content-Type: application/json
+
+{
+    
+    "companyId": "110e0ac0-6b5d-4d20-8feb-2d8a2a2f7e6d",
+    "name": "Diego Romanio de Almeida",
+    "email": "diego@qosit.cloud",
+    "password": "Gn@887697"
+}
