@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { Company, Prisma } from 'src/generated/prisma/client';
 import { PrismaService } from 'src/services/prisma/prisma.service';
 
@@ -30,6 +30,11 @@ export class CompanyService {
   }
 
   async createCompany(data: Prisma.CompanyCreateInput): Promise<Company> {
+    const existing = await this.company({ cnpj: data.cnpj });
+    if (existing) {
+      throw new ConflictException('User already exists');
+    }
+
     return this.prisma.company.create({
       data,
     });
