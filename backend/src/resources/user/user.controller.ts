@@ -5,12 +5,11 @@ import {
   Get,
   Inject,
   Param,
-  Patch,
   Post,
   Put,
 } from '@nestjs/common';
 import { Prisma, User as UserModel } from 'src/generated/prisma/client';
-import { UserService } from 'src/services/user/user.service';
+import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {
@@ -34,12 +33,12 @@ export class UserController {
     @Body() userData: Prisma.UserUpdateInput,
     @Param('id') id: string,
   ): Promise<UserModel> {
-    return this.userService.updateUser({ where: { id }, data: userData });
+    return await this.userService.updateUser({ where: { id }, data: userData });
   }
 
   @Delete(':id')
   async deleteUser(@Param('id') id: string): Promise<null> {
-    this.userService.deleteUser({ id });
+    await this.userService.deleteUser({ id });
     return null;
   }
 }

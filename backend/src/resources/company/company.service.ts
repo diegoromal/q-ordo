@@ -1,6 +1,6 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { Company, Prisma } from 'src/generated/prisma/client';
-import { PrismaService } from 'src/services/prisma/prisma.service';
+import { PrismaService } from 'src/resources/database/prisma/prisma.service';
 
 @Injectable()
 export class CompanyService {
